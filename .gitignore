@@ -1,0 +1,16 @@
+Temp/
+Art/
+Build/
+Data/
+Doc/
+ReadMe/
+Temp/
+Client/Library/
+Client/Logs/
+Client/obj/
+Client/Temp/
+Client/UserSettings/
+Client/.vsconfig
+Client/.vscode/
+Client/.vs/
+*.meta

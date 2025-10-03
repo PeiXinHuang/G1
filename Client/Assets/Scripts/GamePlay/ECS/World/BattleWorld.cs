@@ -1,0 +1,25 @@
+public class BattleWorld : World
+{
+    public override void Enter()
+    {
+        base.Enter();
+        this.AddSystem(new RenderSystem(this));
+        this.AddSystem(new MoveSystem(this));
+        this.AddSystem(new SkillSystem(this));
+
+
+        PlayerEntity player = CreateEntity<PlayerEntity>();
+        player.InitData(1001);
+
+        InputMgr.Instance.SetOperateEntity(player);
+
+    }
+    public override void Update(float deltaTime)
+    {
+        base.Update(deltaTime);
+    }
+    public override void Exit()
+    {
+        base.Exit();
+    }
+}
