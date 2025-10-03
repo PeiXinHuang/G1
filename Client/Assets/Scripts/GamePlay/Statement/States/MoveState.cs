@@ -10,9 +10,6 @@ public class MoveState : State
     public override void Enter()
     {
         this.roleEntity.PlayAnim(AnimationName.Run);
-        var dir = InputMgr.Instance.GetMoveDirection();
-        this.roleEntity.SetDirection(dir);
-        this.roleEntity.SetMove(true);
     }
 
     public override void Update(float deltaTime)

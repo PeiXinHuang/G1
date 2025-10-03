@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TransformComponent : BaseComponent
 {
-    public Vector3 position = new Vector3();
+    public Vector2 position = new Vector2();
     public int direction = 1; // -1 for left, 1 for right
     public bool isDirtyPos = false;
     public bool isDirtyDir = false;

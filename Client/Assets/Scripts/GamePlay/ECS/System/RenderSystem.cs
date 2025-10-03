@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,7 +9,7 @@ public class RenderSystem : BaseSystem
     }
     public override void Update(float deltaTime)
     {
-       var matchEntity = world.GetEntityWithComponent<RenderComponent>();
+       var matchEntity = EntityMgr.Instance.GetEntityWithComponent<RenderComponent>();
        for (int i = 0; i < matchEntity.Count; i++)
        {
            var entity = matchEntity[i];

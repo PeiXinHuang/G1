@@ -60,6 +60,7 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\2022.3.62f1c1\Editor\Data\Tools\Unity.SourceGenerators\Unity.Properties.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\GamePlay\Manager\EntityMgr.cs" />
     <Compile Include="Assets\Scripts\GamePlay\GameManager.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingOptionalCancel.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralCameraShake.cs" />
@@ -75,8 +76,8 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSimpleUI.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Entity\Entity.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\CommonUtils.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\AI\EnemyCtrl.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingRotate.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing243.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Statement\States\MoveState.cs" />
@@ -84,7 +85,6 @@
     <Compile Include="Assets\Scripts\GamePlay\ECS\Component\RenderComponent.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Input\InputMgr.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\AI\BaseCtrl.cs" />
     <Compile Include="Assets\Scripts\GameCore\Manager\ResMgr.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
@@ -103,6 +103,7 @@
     <Compile Include="Assets\Scripts\GamePlay\ECS\Entity\EnemyEntity.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Entity\PlayerEntity.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Component\TransformComponent.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Ctrl\PlayerCtrl.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingSceneSwitching.cs" />
     <Compile Include="Assets\Scripts\GamePlay\MainDefine.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing246.cs" />
@@ -123,6 +124,7 @@
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\System\MoveSystem.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Ctrl\EnemyCtrl.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Statement\States\AttackState.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanAudio.cs" />
     <Compile Include="Assets\LeanTween\Framework\LTDescrOptional.cs" />
@@ -130,8 +132,8 @@
     <Compile Include="Assets\LeanTween\Testing\TestingMaxTweens.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingIssue.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralUISpace.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Ctrl\BaseCtrl.cs" />
     <Compile Include="Assets\LeanTween\Testing\FollowingTests.cs" />
-    <Compile Include="Assets\Scripts\GamePlay\Statement\StateCondition\StateFuncUtils.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Component\SkillComponent.cs" />
     <Compile Include="Assets\Scripts\GameCore\Manager\SceneMgr.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasic.cs" />

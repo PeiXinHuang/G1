@@ -9,7 +9,6 @@ public class IdleState : State
     {
         // 进入Idle状态时，播放Idle动画
         this.roleEntity.PlayAnim(AnimationName.Idle);
-        this.roleEntity.SetMove(false);
     }
 
     public override void Update(float deltaTime)

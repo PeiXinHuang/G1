@@ -10,6 +10,7 @@ public class RenderComponent : BaseComponent
     public string aniName = "";
     public Animator animator = null;
     public bool isDirty = false;
+    public bool needMirror = false; //模型是否需要镜像
     public void SetAnimName(string aniName) {
         if (this.aniName == aniName)
         {

@@ -12,7 +12,7 @@ public class MoveSystem : BaseSystem
 
     public override void Update(float deltaTime)
     {
-        var matchEntity = world.GetEntityWithComponents(new Type[] { typeof(MoveComponent), typeof(TransformComponent) });
+        var matchEntity = EntityMgr.Instance.GetEntityWithComponents(new Type[] { typeof(MoveComponent), typeof(TransformComponent) });
         for (int i = 0; i < matchEntity.Count; i++)
         {
             var entity = matchEntity[i];
@@ -23,21 +23,23 @@ public class MoveSystem : BaseSystem
             {
                 transformComponent.SetPosY(transformComponent.position.y + moveComponent.upSpeed * deltaTime);
                 moveComponent.upSpeed -= 9.8f * deltaTime;
+                Debug.Log($"upSpeed: {moveComponent.upSpeed}");
             }
 
-            if(moveComponent.isMoving)
+            if (moveComponent.isMoving)
             {
-                transformComponent.SetPosX(transformComponent.position.x + moveComponent.speed* deltaTime * transformComponent.direction);
+                transformComponent.SetPosX(transformComponent.position.x + moveComponent.moveSpeed * deltaTime * transformComponent.direction);
+                //moveComponent.moveSpeed -= 5.0f * deltaTime;
             }
-                
-            if(transformComponent.position.y <= 0)
+
+            if (transformComponent.position.y <= 0)
             {
                 (entity as RoleEntity).SetJump(false);
             }
 
         }
 
-        matchEntity = world.GetEntityWithComponents(new Type[] {typeof(TransformComponent), typeof(RenderComponent)});
+        matchEntity = EntityMgr.Instance.GetEntityWithComponents(new Type[] {typeof(TransformComponent), typeof(RenderComponent)});
         for (int i = 0; i < matchEntity.Count; i++)
         {
             var entity = matchEntity[i];
@@ -52,7 +54,8 @@ public class MoveSystem : BaseSystem
             if (transformComponent != null && transformComponent.isDirtyDir && renderComponent.gameObject)
             {
                 // Update the scale of the GameObject based on the direction
-                renderComponent.gameObject.transform.localScale = new Vector3(transformComponent.direction * (-1), 1, 1);
+                var mirrorValue = renderComponent.needMirror ? -1 : 1;
+                renderComponent.gameObject.transform.localScale = new Vector3(transformComponent.direction * mirrorValue, 1, 1);
             }
         }
     }

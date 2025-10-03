@@ -8,12 +8,12 @@ public class BattleWorld : World
         this.AddSystem(new SkillSystem(this));
 
 
-        PlayerEntity player = CreateEntity<PlayerEntity>();
+        PlayerEntity player = EntityMgr.Instance.CreateEntity<PlayerEntity>();
         player.InitData(1001, 0, 1);
 
         InputMgr.Instance.SetOperateEntity(player);
 
-        EnemyEntity enemy = CreateEntity<EnemyEntity>();
+        EnemyEntity enemy = EntityMgr.Instance.CreateEntity<EnemyEntity>();
         enemy.InitData(1002, -3, -1);
 
         //CameraMgr.Instance.SetFollowTarget(player.transform, new Vector3(0, 0, -10));

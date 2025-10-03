@@ -10,7 +10,7 @@ public class SkillSystem : BaseSystem
     }
     public override void Update(float deltaTime)
     {
-        var matchEntity = world.GetEntityWithComponent<SkillComponent>();
+        var matchEntity = EntityMgr.Instance.GetEntityWithComponent<SkillComponent>();
         for (int i = 0; i < matchEntity.Count; i++)
         {
             var entity = matchEntity[i];

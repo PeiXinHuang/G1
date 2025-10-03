@@ -34,7 +34,7 @@ public class StateMachine
     public StateType CurrentStateType { get; private set; }
 
     // 条件切换逻辑：允许注册条件切换，Update时自动检测并切换
-    private Dictionary<StateType, List<Func<bool>>> transitionConditions = new Dictionary<StateType, List<Func<bool>>>();
+    //private Dictionary<StateType, List<Func<bool>>> transitionConditions = new Dictionary<StateType, List<Func<bool>>>();
 
     public void AddState(StateType type, State state)
     {
@@ -53,6 +53,10 @@ public class StateMachine
                 currentState.Exit();
             }
             currentState = states[newStateType];
+            if(CurrentStateType == newStateType)
+            {
+                return;
+            }
             CurrentStateType = newStateType;
             currentState.Enter();
         }
@@ -61,17 +65,17 @@ public class StateMachine
     public void Update(float deltaTime)
     {
         // 检查条件切换
-        if (transitionConditions.ContainsKey(CurrentStateType))
-        {
-            foreach (var cond in transitionConditions[CurrentStateType])
-            {
-                if (cond())
-                {
-                    // 条件满足并已切换状态，跳出
-                    break;
-                }
-            }
-        }
+        //if (transitionConditions.ContainsKey(CurrentStateType))
+        //{
+        //    foreach (var cond in transitionConditions[CurrentStateType])
+        //    {
+        //        if (cond())
+        //        {
+        //            // 条件满足并已切换状态，跳出
+        //            break;
+        //        }
+        //    }
+        //}
         // 状态自身逻辑
         if (currentState != null)
         {
@@ -88,21 +92,21 @@ public class StateMachine
     /// <summary>
     /// 注册从当前状态到目标状态的切换条件
     /// </summary>
-    public void AddTransition(StateType from, StateType to, Func<bool> condition)
-    {
-        if (!transitionConditions.ContainsKey(from))
-        {
-            transitionConditions[from] = new List<Func<bool>>();
-        }
-        // 包装条件，使其在满足时切换到目标状态
-        transitionConditions[from].Add(() =>
-        {
-            if (condition())
-            {
-                ChangeState(to);
-                return true;
-            }
-            return false;
-        });
-    }
+    //public void AddTransition(StateType from, StateType to, Func<bool> condition)
+    //{
+    //    if (!transitionConditions.ContainsKey(from))
+    //    {
+    //        transitionConditions[from] = new List<Func<bool>>();
+    //    }
+    //    // 包装条件，使其在满足时切换到目标状态
+    //    transitionConditions[from].Add(() =>
+    //    {
+    //        if (condition())
+    //        {
+    //            ChangeState(to);
+    //            return true;
+    //        }
+    //        return false;
+    //    });
+    //}
 }

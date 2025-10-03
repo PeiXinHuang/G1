@@ -42,6 +42,7 @@ public class RoleEntity : Entity
     public void SetMove(bool isMove)
     {
         var moveComponent = this.GetComponent<MoveComponent>();
+        moveComponent.moveSpeed = isMove ? moveComponent.moveValue : 0;
         moveComponent.isMoving = isMove;
     }
 
@@ -57,6 +58,7 @@ public class RoleEntity : Entity
     public void PlaySkill(int id)
     {
         var skillComponent = this.GetComponent<SkillComponent>();
+        Debug.Log($"PlaySkill: {id}");
         skillComponent.skillId = 1;
     }
 

@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class EnemyEntity : RoleEntity
 {
+    private EnemyCtrl enemyCtrl;
     public EnemyEntity() : base()
     {
         stateMachine.AddState(StateType.Idle, new IdleState(stateMachine, this));
+        stateMachine.AddState(StateType.Run, new MoveState(stateMachine, this));
+        stateMachine.AddState(StateType.Attack, new AttackState(stateMachine, this));
         stateMachine.ChangeState(StateType.Idle);
 
+        this.enemyCtrl = new EnemyCtrl(this);
     }
 
     protected override void InitComponents()
@@ -27,6 +31,10 @@ public class EnemyEntity : RoleEntity
 
     public override void OnUpdate(float deltaTime)
     {
+        if(this.enemyCtrl != null)
+        {
+            this.enemyCtrl.Update();
+        }
         if (this.stateMachine != null)
         {
             this.stateMachine.Update(deltaTime);
