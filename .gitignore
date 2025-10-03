@@ -2,7 +2,6 @@ Temp/
 Art/
 Build/
 Data/
-Doc/
 ReadMe/
 Temp/
 Client/Library/
@@ -14,3 +13,6 @@ Client/.vsconfig
 Client/.vscode/
 Client/.vs/
 *.meta
+
+
+
