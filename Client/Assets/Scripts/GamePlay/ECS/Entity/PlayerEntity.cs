@@ -17,7 +17,7 @@ public class PlayerEntity : RoleEntity
         stateMachine.AddTransition(StateType.Idle, StateType.Jump, () => StateFuncUtils.IsTranslateJump(this));
         stateMachine.AddTransition(StateType.Idle, StateType.Attack, () => StateFuncUtils.IsTranslateAttack(this));
 
-        stateMachine.AddTransition(StateType.Run, StateType.Jump, () => StateFuncUtils.IsTranslateJump(this));
+        //stateMachine.AddTransition(StateType.Run, StateType.Jump, () => StateFuncUtils.IsTranslateJump(this));
         stateMachine.AddTransition(StateType.Run, StateType.Idle, () => StateFuncUtils.IsTranslateIdle(this));
   
 
@@ -32,13 +32,13 @@ public class PlayerEntity : RoleEntity
         base.InitComponents();
     }
 
-    public override void InitData(int id)
+    public void InitData(int id, int oripos, int dir)
     {
         base.InitData(id);
 
         var transformComponent = this.GetComponent<TransformComponent>();
-        transformComponent.SetPosX(0);
-        transformComponent.SetDirection(1); // Default direction to right
+        transformComponent.SetPosX(oripos);
+        transformComponent.SetDirection(dir);
     }
 
     public override void OnUpdate(float deltaTime)

@@ -3,6 +3,10 @@ using UnityEngine;
 
 public static class StateFuncUtils{
     public static bool IsTranslateMove(RoleEntity roleEntity){
+        if (!StateFuncUtils.IsOnGround(roleEntity))
+        {
+            return false;
+        }
         return InputMgr.Instance.GetAction(InputAction.MoveLeft) || InputMgr.Instance.GetAction(InputAction.MoveRight);
     }
 

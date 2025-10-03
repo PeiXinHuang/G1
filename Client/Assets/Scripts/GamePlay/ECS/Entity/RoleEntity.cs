@@ -25,7 +25,7 @@ public class RoleEntity : Entity
     {
         base.InitData(id);
         var renderComponent = this.GetComponent<RenderComponent>();
-        renderComponent.renderingPath = string.Format("Role/{0}", id);
+        renderComponent.renderingPath = string.Format("Role/{0}/{0}", id, id);
     }
 
     public void PlayAnim(string aniName)

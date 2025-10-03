@@ -76,6 +76,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineEndless.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Entity\Entity.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\AI\EnemyCtrl.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingRotate.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing243.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Statement\States\MoveState.cs" />
@@ -83,6 +84,7 @@
     <Compile Include="Assets\Scripts\GamePlay\ECS\Component\RenderComponent.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Input\InputMgr.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\AI\BaseCtrl.cs" />
     <Compile Include="Assets\Scripts\GameCore\Manager\ResMgr.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathBezier.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
@@ -96,7 +98,9 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacy.cs" />
     <Compile Include="Assets\LeanTween\Testing\PerformanceTests.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\LogoCinematic.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\Manager\CameraMgr.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralAdvancedTechniques.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\Entity\EnemyEntity.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Entity\PlayerEntity.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Component\TransformComponent.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingSceneSwitching.cs" />
