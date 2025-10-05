@@ -20,9 +20,9 @@ public class EnemyEntity : RoleEntity
         base.InitComponents();
     }
 
-    public void InitData(int id, int originPos, int dir)
+    public void InitData(int modelId, int originPos, int dir)
     {
-        base.InitData(id);
+        base.InitData(modelId);
 
         var transformComponent = this.GetComponent<TransformComponent>();
         transformComponent.SetPosX(originPos);
@@ -35,17 +35,11 @@ public class EnemyEntity : RoleEntity
         {
             this.enemyCtrl.Update();
         }
-        if (this.stateMachine != null)
-        {
-            this.stateMachine.Update(deltaTime);
-        }
+        base.OnUpdate(deltaTime);
 
     }
     public override void Destroy()
     {
-        if (this.stateMachine != null)
-        {
-            this.stateMachine.Destroy();
-        }
+        base.Destroy();
     }
 }

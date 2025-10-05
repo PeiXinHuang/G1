@@ -7,6 +7,7 @@ public class RenderComponent : BaseComponent
     public string renderingPath = null;
     public GameObject gameObject = null;
     public bool isLoad = false;
+    public bool hasLoad = false;
     public string aniName = "";
     public Animator animator = null;
     public bool isDirty = false;
@@ -18,5 +19,17 @@ public class RenderComponent : BaseComponent
         }
         this.aniName = aniName;
         isDirty = true;
+    }
+
+    public override void OnDestroy()
+    {
+        if (gameObject != null)
+        {
+            GameObject.Destroy(gameObject);
+            gameObject = null;
+        }
+        animator = null;
+        this.isLoad = false;
+        this.hasLoad = false;
     }
 }

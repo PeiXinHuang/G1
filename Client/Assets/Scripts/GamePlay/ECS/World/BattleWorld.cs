@@ -1,11 +1,13 @@
 public class BattleWorld : World
 {
+    private EnemySpawner enemySpawner;
     public override void Enter()
     {
         base.Enter();
         this.AddSystem(new RenderSystem(this));
         this.AddSystem(new MoveSystem(this));
         this.AddSystem(new SkillSystem(this));
+        this.AddSystem(new ColliderSystem(this));
 
 
         PlayerEntity player = EntityMgr.Instance.CreateEntity<PlayerEntity>();
@@ -13,9 +15,7 @@ public class BattleWorld : World
 
         InputMgr.Instance.SetOperateEntity(player);
 
-        EnemyEntity enemy = EntityMgr.Instance.CreateEntity<EnemyEntity>();
-        enemy.InitData(1002, -3, -1);
-
+        enemySpawner = new EnemySpawner();
         //CameraMgr.Instance.SetFollowTarget(player.transform, new Vector3(0, 0, -10));
         CameraMgr.Instance.SetOffset(0, 2);
         CameraMgr.Instance.SetTarget(player.GetComponent<TransformComponent>());
@@ -23,6 +23,8 @@ public class BattleWorld : World
     public override void Update(float deltaTime)
     {
         base.Update(deltaTime);
+
+        enemySpawner.Update(deltaTime);
     }
     public override void Exit()
     {

@@ -28,9 +28,13 @@ public class PlayerCtrl : BaseCtrl
 
     private bool CheckAttack()
     {
-        if(isInAttack())
+        if(IsInAttack())
         {
             return true;
+        }
+        else if(this.IsInSkillCd())
+        {
+            return false;
         }
         return InputMgr.Instance.GetActionDown(InputAction.Attack);
     }
@@ -41,7 +45,16 @@ public class PlayerCtrl : BaseCtrl
         {
             return true;
         }
-        return InputMgr.Instance.GetActionDown(InputAction.Jump);
+        var canJump = InputMgr.Instance.GetActionDown(InputAction.Jump);
+        if(canJump)
+        {
+            this.playerEntity.SetJump(true);
+        }
+        else
+        {
+            this.playerEntity.SetJump(false);
+        }
+        return canJump;
     }
 
     private bool CheckMove()

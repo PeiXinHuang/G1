@@ -5,3 +5,8 @@ public static class AnimationName
     public const string Jump = "Jump";
     public const string Attack = "Skill1";
 }
+
+public static class LayerName
+{
+    public const string AttackBox = "AttackBox";
+}

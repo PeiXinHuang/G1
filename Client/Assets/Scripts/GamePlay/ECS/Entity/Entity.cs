@@ -57,9 +57,9 @@ public class Entity
 
     }
 
-    public virtual void InitData(int id)
+    public virtual void InitData()
     {
-        this.id = id;
+        //this.id = id;
     }
 
     public Entity()
@@ -74,7 +74,11 @@ public class Entity
     }
     public virtual void Destroy()
     {
-
+        for (int i = 0; i < components.Count; i++)
+        {
+            components[i].OnDestroy();
+        }
+        components.Clear();
     }
 }
 

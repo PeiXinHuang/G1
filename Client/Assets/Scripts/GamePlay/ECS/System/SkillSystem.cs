@@ -18,11 +18,19 @@ public class SkillSystem : BaseSystem
             if (skillComponent.skillId != 0)
             {
                 if(skillComponent.skillTimer <= skillComponent.skillDuration)
-                    skillComponent.skillTimer += deltaTime; 
+                {
+                    skillComponent.skillTimer += deltaTime;
+                    //Debug.Log("Skill in progress " + skillComponent.skillTimer);
+                }
+                else if(skillComponent.skillCdTimer <= skillComponent.skillCdDuration)
+                {
+                    skillComponent.skillCdTimer += deltaTime;
+                    skillComponent.StopSkill();
+                }
                 else
                 {
-                    skillComponent.skillId = 0;
-                    skillComponent.skillTimer = 0;
+                    (entity as RoleEntity).UpdateState(StateType.Idle);
+                    skillComponent.FinishSkill();
                 }
             }
         }

@@ -10,6 +10,8 @@ public class EntityMgr : Singleton<EntityMgr>
 
     private List<Entity> entities = new List<Entity>();
 
+    private Dictionary<int, Entity> entityDir = new Dictionary<int, Entity>();
+
     private PlayerEntity playerEntity = null;
 
     // Rename the method to avoid conflict with Unity's built-in Update method
@@ -30,6 +32,7 @@ public class EntityMgr : Singleton<EntityMgr>
             entity.Destroy();
         }
         entities.Clear();
+        entityDir.Clear();
         this.playerEntity = null;
     }
 
@@ -38,6 +41,7 @@ public class EntityMgr : Singleton<EntityMgr>
         T entity = new T();
         entity.id = id++;
         entities.Add(entity);
+        entityDir.Add(entity.id, entity);
         if(entity is PlayerEntity)
         {
             playerEntity = entity as PlayerEntity;
@@ -47,21 +51,24 @@ public class EntityMgr : Singleton<EntityMgr>
 
     public void DestroyEntity(int id)
     {
-        Entity entity = entities.Find(e => e.id == id);
-        if (entity != null)
+        Entity entity = this.GetEntityByEntityId(id);
+        if (entity == null)
         {
-            entities.Remove(entity);
+            // Debug.Log(entity.id + " is destroyed");
+
+            return;
+  
         }
 
-        if(this.playerEntity != null && entity == this.playerEntity)
+
+        entities.Remove(entity);
+        entityDir.Remove(entity.id);
+        if (this.playerEntity != null && entity == this.playerEntity)
         {
             this.playerEntity = null;
         }
 
         entity.Destroy();
-        entity = null;
-
-
     }
 
     public PlayerEntity GetPlayerEntity()
@@ -105,6 +112,12 @@ public class EntityMgr : Singleton<EntityMgr>
         return result;
     }
 
+    public Entity GetEntityByEntityId(int entityId)
+    {
+        Entity entity = null;
+        entityDir.TryGetValue(entityId, out entity);
+        return entity;
+    }
     protected override void  OnDestroy()
     {
         this.ClearEntities();

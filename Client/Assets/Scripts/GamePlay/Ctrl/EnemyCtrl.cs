@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,9 +26,15 @@ public class EnemyCtrl : BaseCtrl
 
     private bool CheckAttack()
     {
-        if(this.isInAttack())
+        if (this.IsInAttack())
         {
+            Debug.Log("Enemy in attack state, continue attacking.");
             return true;
+        }
+        else if (this.IsInSkillCd())
+        {
+            Debug.Log("Enemy skill is in cooldown, cannot attack.");
+            return false;
         }
         var playerEntity = EntityMgr.Instance.GetPlayerEntity();
         if (playerEntity != null)
@@ -38,9 +45,12 @@ public class EnemyCtrl : BaseCtrl
                 this.enemyEntity.SetDirection(CommonUtils.GetToTargetTranDir(
                          this.enemyEntity.GetComponent<TransformComponent>(), playerEntity.GetComponent<TransformComponent>()));
                 this.enemyEntity.SetMove(false);
+         
+                Debug.Log("Enemy attacks the player.");
                 return true;
             }
         }
+        Debug.Log("Enemy does not attack.");
         return false;
     }
 
@@ -50,7 +60,7 @@ public class EnemyCtrl : BaseCtrl
         {
             if (playerEntity != null) {
                 float distance = CommonUtils.GetTranDisX(enemyEntity.GetComponent<TransformComponent>(), playerEntity.GetComponent<TransformComponent>());
-                if (distance < 5.0f)
+                if (3.0f <= distance && distance < 5.0f)
                 {
                     this.enemyEntity.SetMove(true);
                     this.enemyEntity.SetDirection(CommonUtils.GetToTargetTranDir(

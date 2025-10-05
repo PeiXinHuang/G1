@@ -19,13 +19,15 @@ public class RoleEntity : Entity
         this.AddComponent<TransformComponent>();
         this.AddComponent<MoveComponent>();
         this.AddComponent<SkillComponent>();
+        this.AddComponent<ColliderComponent>();
+        this.AddComponent<AttrComponent>();
     }
 
-    public override void InitData(int id)
+    public void InitData(int modelId)
     {
-        base.InitData(id);
+        base.InitData();
         var renderComponent = this.GetComponent<RenderComponent>();
-        renderComponent.renderingPath = string.Format("Role/{0}/{0}", id, id);
+        renderComponent.renderingPath = string.Format("Role/{0}/{0}", modelId, modelId);
     }
 
     public void PlayAnim(string aniName)
@@ -49,21 +51,61 @@ public class RoleEntity : Entity
     public void SetJump(bool isJump)
     {
         var moveComponent = this.GetComponent<MoveComponent>();
+        moveComponent.SetJump(isJump);
+    }
 
-        moveComponent.upSpeed = isJump ? moveComponent.jumpValue : 0;
-        moveComponent.isJumping = isJump;
+    public bool IsOnGround()
+    {
+        var transformComponent = this.GetComponent<TransformComponent>();
+        return transformComponent.position.y <= 0.00005;
     }
 
 
     public void PlaySkill(int id)
     {
         var skillComponent = this.GetComponent<SkillComponent>();
-        Debug.Log($"PlaySkill: {id}");
-        skillComponent.skillId = 1;
+        if (skillComponent.skillId == 0)
+        {
+            var transformComponent = this.GetComponent<TransformComponent>();
+            skillComponent.StartSkill(id, this.id, transformComponent.position);
+        }
+    }
+
+    public void StopSkill()
+    {
+        var skillComponent = this.GetComponent<SkillComponent>();
+        foreach (var box in skillComponent.attackBoxList)
+        {
+            GameObject.Destroy(box);
+        }
+        skillComponent.attackBoxList.Clear();
+        skillComponent.skillId = 0;
+    }
+
+    public void OnHurt(int value)
+    {
+        var attrComp = this.GetComponent<AttrComponent>();
+        attrComp.curHp -= value;
+        if (attrComp.curHp <= 0)
+        {
+            this.Die();
+        }
+
+    }
+
+    public void OnRecoverd(int value)
+    {
+
+    }
+
+    public void Die()
+    {
+        EntityMgr.Instance.DestroyEntity(id);
     }
 
     public void UpdateState(StateType stateType)
     {
+
         this.stateMachine.ChangeState(stateType);
     }
 
@@ -78,6 +120,7 @@ public class RoleEntity : Entity
     }
     public override void Destroy()
     {
+        base.Destroy();
         if (this.stateMachine != null)
         {
             this.stateMachine.Destroy();

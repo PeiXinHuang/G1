@@ -78,11 +78,13 @@
     <Compile Include="Assets\Scripts\GamePlay\ECS\Entity\Entity.cs" />
     <Compile Include="Assets\Scripts\GamePlay\CommonUtils.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\Following.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\EntityTrigger.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingRotate.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing243.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Statement\States\MoveState.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralBasics2d.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Component\RenderComponent.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\EntityTag.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Input\InputMgr.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSplineTrack.cs" />
     <Compile Include="Assets\Scripts\GameCore\Manager\ResMgr.cs" />
@@ -90,6 +92,7 @@
     <Compile Include="Assets\LeanTween\Examples\Scripts\PathSpline.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Statement\States\JumpState.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing240.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\AttackBox.cs" />
     <Compile Include="Assets\LeanTween\Testing\Scripts\LeanPool.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\System\SkillSystem.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingSequencer.cs" />
@@ -104,10 +107,13 @@
     <Compile Include="Assets\Scripts\GamePlay\ECS\Entity\PlayerEntity.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\Component\TransformComponent.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Ctrl\PlayerCtrl.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\Spawn\Spawner.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\Spawn\EnemySpawner.cs" />
     <Compile Include="Assets\LeanTween\Testing\TestingSceneSwitching.cs" />
     <Compile Include="Assets\Scripts\GamePlay\MainDefine.cs" />
     <Compile Include="Assets\LeanTween\Testing\Testing246.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\TestingZLegacyExt.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\Component\AttrComponent.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralSequencer.cs" />
     <Compile Include="Assets\LeanTween\Examples\Scripts\GeneralEventsListeners.cs" />
     <Compile Include="Assets\Scripts\GameCore\Singleton.cs" />
@@ -122,7 +128,9 @@
     <Compile Include="Assets\Scripts\GamePlay\ECS\World\BattleWorld.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\System\BaseSystem.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanTweenExt.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\Component\ColliderComponent.cs" />
     <Compile Include="Assets\Scripts\GamePlay\ECS\System\MoveSystem.cs" />
+    <Compile Include="Assets\Scripts\GamePlay\ECS\System\ColliderSystem.cs" />
     <Compile Include="Assets\LeanTween\Framework\LeanSmooth.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Ctrl\EnemyCtrl.cs" />
     <Compile Include="Assets\Scripts\GamePlay\Statement\States\AttackState.cs" />

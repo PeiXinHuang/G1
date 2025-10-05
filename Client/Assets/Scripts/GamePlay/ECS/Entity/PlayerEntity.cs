@@ -12,19 +12,6 @@ public class PlayerEntity : RoleEntity
         stateMachine.AddState(StateType.Jump, new JumpState(stateMachine, this));
         stateMachine.AddState(StateType.Attack, new AttackState(stateMachine, this));
         stateMachine.ChangeState(StateType.Idle);
-
-        // Wrap the method call in a lambda to match the expected Func<bool> delegate type
-        //stateMachine.AddTransition(StateType.Idle, StateType.Run, () => StateFuncUtils.IsTranslateMove(this));
-        //stateMachine.AddTransition(StateType.Idle, StateType.Jump, () => StateFuncUtils.IsTranslateJump(this));
-        //stateMachine.AddTransition(StateType.Idle, StateType.Attack, () => StateFuncUtils.IsTranslateAttack(this));
-
-        //stateMachine.AddTransition(StateType.Run, StateType.Jump, () => StateFuncUtils.IsTranslateJump(this));
-        //stateMachine.AddTransition(StateType.Run, StateType.Idle, () => StateFuncUtils.IsTranslateIdle(this));
-  
-
-        //stateMachine.AddTransition(StateType.Attack, StateType.Idle, () => StateFuncUtils.IsTranslateIdle(this));
-
-        //stateMachine.AddTransition(StateType.Jump, StateType.Idle, () => StateFuncUtils.IsTranslateIdle(this));
         playerCtrl = new PlayerCtrl(this);
     }
 
@@ -33,13 +20,17 @@ public class PlayerEntity : RoleEntity
         base.InitComponents();
     }
 
-    public void InitData(int id, int oripos, int dir)
+    public void InitData(int modelId, int oripos, int dir)
     {
-        base.InitData(id);
+        base.InitData(modelId);
 
         var transformComponent = this.GetComponent<TransformComponent>();
         transformComponent.SetPosX(oripos);
         transformComponent.SetDirection(dir);
+
+        var attrComponent = this.GetComponent<AttrComponent>();
+        attrComponent.maxHp = 100;
+        attrComponent.curHp = 100;
 
         var renderComponent = this.GetComponent<RenderComponent>();
         renderComponent.needMirror = true;
@@ -59,9 +50,6 @@ public class PlayerEntity : RoleEntity
     }
     public override void Destroy()
     {
-        if (this.stateMachine != null)
-        {
-            this.stateMachine.Destroy();
-        }
+        base.Destroy();
     }
 }

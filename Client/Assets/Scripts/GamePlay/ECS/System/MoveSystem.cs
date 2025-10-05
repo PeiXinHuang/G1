@@ -23,20 +23,12 @@ public class MoveSystem : BaseSystem
             {
                 transformComponent.SetPosY(transformComponent.position.y + moveComponent.upSpeed * deltaTime);
                 moveComponent.upSpeed -= 9.8f * deltaTime;
-                Debug.Log($"upSpeed: {moveComponent.upSpeed}");
             }
 
             if (moveComponent.isMoving)
             {
                 transformComponent.SetPosX(transformComponent.position.x + moveComponent.moveSpeed * deltaTime * transformComponent.direction);
-                //moveComponent.moveSpeed -= 5.0f * deltaTime;
             }
-
-            if (transformComponent.position.y <= 0)
-            {
-                (entity as RoleEntity).SetJump(false);
-            }
-
         }
 
         matchEntity = EntityMgr.Instance.GetEntityWithComponents(new Type[] {typeof(TransformComponent), typeof(RenderComponent)});

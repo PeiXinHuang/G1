@@ -20,6 +20,9 @@ public class RenderSystem : BaseSystem
                 {
                     renderComponent.gameObject = GameObject.Instantiate(gameObject); 
                     renderComponent.animator = renderComponent.gameObject.GetComponent<Animator>();
+
+                    renderComponent.gameObject.AddComponent<EntityTag>().entityId = entity.id;
+                    renderComponent.hasLoad = true;
                 });
                 renderComponent.isLoad = true;
             }
